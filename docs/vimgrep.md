@@ -23,11 +23,19 @@
 
 ### 含义
 
+- `vimgrep` /匹配模式/[g][j] 要搜索的文件/范围 
 - `vim` 可作为 `vimgrep` 的缩写
 - `!` 可紧随 `vimgrep` 之后，表示强制执行该命令
 - 索引的关键字 `pattern` 放在了两个 `/` 中间，并且支持正则表达式
+- `g`：表示是否把每一行的多个匹配结果都加入
+- `j`：表示是否搜索完后定位到第一个匹配位置
 - `g, j` 可选。 如果添加 `g`，将显示重复行， 如果添加 `j`，`Vim` 将不会自动跳转到第一个匹配的行（可能是别的文件）
 - `file` 可以是正则文件名，也可以是多个确定的文件名
+- `vimgrep /pattern/ %`           在当前打开文件中查找
+- `vimgrep /pattern/ *`             在当前目录下查找所有
+- `vimgrep /pattern/ **`            在当前目录及子目录下查找所有
+- `vimgrep /pattern/ *.c`          查找当前目录下所有.c文件
+- `vimgrep /pattern/ **/*`         只查找子目录
 
 ### 使用
 
@@ -47,6 +55,12 @@
 :ccl[ose]           # 关闭 Quickfix 窗口。
 ```
 
+如果你经常使用这两个命令, 你还可以给它们设定快捷键
+```bash
+nmap <F5> :cp<cr>
+nmap <F6> :cn<cr>
+```
+
 ## lvimgrep
 
 `lvimgrep` 与 `vimgrep` 搜索命令基本一样，不同点在于搜索结果不是显示在 `Quickfix` 中而是显示在 `location-list` 中
@@ -56,5 +70,3 @@
 `quickfix list` 是全局的，相对于窗口而言，不同的窗口共用一个 `quickfix list`，可以使用 `:cw` 或者 `:copen` 打开；而 `loaction list` 是局部于某个特定窗口的，即不同窗口的 `location list` 可以不同，使用 `:lw` 或者 `:lopen` 命令打开。（请使用 `:help quickfix` 和 `:help location-list`命令获取帮助）
 
 在 Vim 命令行模式下输入 `:h vimgrep` 可以看到 `vimgrep` 更多使用文档
-
-2018-05-05 发布
