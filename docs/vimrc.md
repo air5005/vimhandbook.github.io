@@ -112,11 +112,10 @@ filetype indent on              " 开启文件类型相应的缩进规则
 这个配置组非常有用，开启后 Vim 可以根据打开的文件格式显示不同的高亮、使用缩进等。不管是使用插件还是自己写插件对他非常依赖。你可以使用 `:filetype` 来查看当前文件是否开启文件检测
 
 ```vim
-" encoding
-set encoding=utf-8              " 打开文件时编码格式
+" encoding set encoding=utf-8              " 打开文件时编码格式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1         "vim会根据该设置识别文件编码
 
-set fileformat=unix    			    " 设置以unix的格式保存文件"
+set fileformat=unix             " 设置以unix的格式保存文件"
 set fileencoding=utf-8          " 在保存文件时，指定编码
 set termencoding=utf-8          " 终端环境告诉vim使用编码
 set ffs=unix,dos,mac            " 在创建文件或写入时，这三种文件格式分别决定了行末要添加什么特殊字符，而在读入文件时，又分别决定了要从行末移去什么特殊字符。
@@ -124,32 +123,32 @@ set formatoptions+=m
 set formatoptions+=B
 
 " 主题
-set background=dark       		  " 配色主题的色系,注意，这不是什么背景色！dark 是暗色系，light 是亮色系。
+set background=light             " 配色主题的色系,注意，这不是什么背景色！dark 是暗色系，light 是亮色系。
 colorscheme desert              " 配色主题的名称,:coloscheme 后键入<tab>可以自动补全 比较喜欢的desert,peachpuff,torte,elfload,slate
 
 " show
 set number                      " 显示行号
-set ruler						            " 显示当前光标行号和列
-set wrap    					          " 设置折行 set nowrap 为不折行
+set ruler                       " 显示当前光标行号和列
+set wrap                        " 设置折行 set nowrap 为不折行
 set sidescroll=1                " 默认设置set sidescroll=0之下，当光标到达屏幕边缘时，将自动扩展显示1/2屏幕的文本。通过使用set sidescroll=1设置，可以实现更加平滑的逐个字符扩展显示。
-set showcmd						          " 在屏幕右下角显示未完成的命令
-set showmode					          " 显示当前vim模式
-set showmatch    				        " 显示匹配的括号
-set matchtime=1					        " 设置showmatch的效果时间，默认500ms，现在是100ms
-set cursorline        			    " 突出显示当前行
-set cursorcolumn        		    " 突出显示当前列
+set showcmd                     " 在屏幕右下角显示未完成的命令
+set showmode                    " 显示当前vim模式
+set showmatch                   " 显示匹配的括号
+set matchtime=1                 " 设置showmatch的效果时间，默认500ms，现在是100ms
+set cursorline                  " 突出显示当前行
+set cursorcolumn                " 突出显示当前列
 set colorcolumn=80              " 设置某一列高亮
 
 
 " search
-set smartcase					"搜索时，如果输入大写，则严格按照大小写搜索，如果小写，并设置了ignorecase，则忽略大小写
-set ignorecase        			"搜索时忽略大小写"
-set incsearch					"搜索时及时匹配搜索内容，需要回车确认
-set hlsearch        			"高亮搜索项"
+set smartcase                   "搜索时，如果输入大写，则严格按照大小写搜索，如果小写，并设置了ignorecase，则忽略大小写
+set ignorecase                  "搜索时忽略大小写"
+set incsearch                   "搜索时及时匹配搜索内容，需要回车确认
+set hlsearch                    "高亮搜索项"
 
 " tab
 set expandtab                   "将<tab>符号转变为<space>空格
-set smarttab					"配合shiftwidth使用，如果设置该值，在行首键入<tab>会填充shiftwidth的数值,其他地方使用tabstop的数值，不设置的话，所有地方都是用shiftwidth数值
+set smarttab                    "配合shiftwidth使用，如果设置该值，在行首键入<tab>会填充shiftwidth的数值,其他地方使用tabstop的数值，不设置的话，所有地方都是用shiftwidth数值
 
 " indent
 set autoindent                  "换行自动缩进
@@ -157,7 +156,7 @@ set smartindent                 "缩进采用c语言风格
 set shiftround                  "在一般模式下键入>>整个缩进shiftwidth的长度，<<反向操作,== 可以与上一行对齐，插入模式下C-T和C-D也可以左右启动
 set shiftwidth=4                "缩进的空格数
 set tabstop=4                   "键入<tab>的步长
-set softtabstop=4                " insert mode tab and backspace use 4 spaces
+set softtabstop=4               " insert mode tab and backspace use 4 spaces
 
 " set mark column color
 hi! link SignColumn   LineNr
@@ -166,20 +165,58 @@ hi! link ShowMarksHLu DiffChange
 
 " status line
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
-set laststatus=2   " 底部显示两行状态栏"
+set laststatus=2               " 底部显示两行状态栏"
 
 
 " select & complete
-set selection=inclusive         "选择文本事，光标所在位置也会被选中
+set selection=inclusive        "选择文本事，光标所在位置也会被选中
 set selectmode=mouse,key
 
-set scrolloff=5        			"距离顶部和底部5行"
-set backspace=2					"任何情况允许使用退格键删除
-set mouse=a       				"启用鼠标"
+set scrolloff=5                "距离顶部和底部5行"
+set backspace=2                "任何情况允许使用退格键删除
+set mouse=a                    "启用鼠标"
 
 " 代码折叠
-set foldlevelstart=99           "默认不折叠"
-set foldmethod=indent           "按照缩紧折叠"
+set foldlevelstart=99          "默认不折叠"
+set foldmethod=indent          "按照缩紧折叠"
+
+nmap <F6> :cn<cr>
+nmap <F5> :cp<cr>
+
+call pathogen#infect()
+
+map <F3> : NERDTreeMirror<CR>
+map <F3> : NERDTreeToggle<CR>
+
+" taglist
+let   Tlist_Inc_Winwidth=0           " 配置打开函数列表的时候不改变窗口大小
+let   Tlist_Use_Right_Window=1       " 配置函数列表挂靠在屏幕右手边
+let   Tlist_File_Fold_Auto_Close=1   " 配置自动关闭非活动的文件
+let   Tlist_Exit_OnlyWindow=1        " 配置当前只有函数列表窗口的时候退出vim
+map <F4> :TlistToggle<cr>            " 快捷键F4切换函数列表
+
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+
+" cscope
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" 开启 语法高亮
+syntax on
+" 查找结果 高亮显示
+set hlsearch
+" 配色方案
+colorscheme desert
+" 关闭兼容模式
+set nocompatible
+" 解决vim 退格键（backspace）不能用
+set backspace=indent,eol,start
 ```
 
 剩下这些配置也都很有用，你可以尝试着一个个配置上对比效果。Vim 的配置千变万化，这些只是部分基本配置，基本没有两个人的 `vimrc` 文件是完全相同，人们会根据当前的学习进度和自己的环境配置不同的样式和功能，这也是 Vim 迷人的地方，构建自己的 IDE，谁不想呢。
@@ -188,4 +225,3 @@ set foldmethod=indent           "按照缩紧折叠"
 
 在对 `vimrc` 有了初步的了解后，以后我们会逐步学习各种高效的配置，让我们的 Vim 越来越得心应手。
 
-2018-04-17 发布
