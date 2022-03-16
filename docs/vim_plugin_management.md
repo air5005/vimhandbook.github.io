@@ -122,23 +122,25 @@ map <F4> :TlistToggle<cr>            " 快捷键F4切换函数列表
 1. 在代码目录中，使用命令 `cscope -Rbq`
 
    其中cscope.out是基本的符号索引，后两个文件是使用"-q"选项生成的，可以加快cscope的索引速度。上面命令的参数含义如下：
-
-   - -R: 在生成索引文件时，搜索子目录树中的代码
-   - -b: 只生成索引文件，不进入cscope的界面
-   - -k: 在生成索引文件时，不搜索/usr/include目录
-   - -q: 生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
-   - -i: 如果保存文件列表的文件名不是cscope.files时，需要加此选项告诉cscope到哪儿去找源文件列表。可以使用"-"，表示由标准输入获得文件列表。
-   - -I dir: 在-I选项指出的目录中查找头文件
-   - -u: 扫描所有文件，重新生成交叉索引文件
-   - -C: 在搜索时忽略大小写
-   - -P path: 在以相对路径表示的文件前加上的path，这样，你不用切换到你数据库文件所在的目录也可以使用它了。
+```
+   -R: 在生成索引文件时，搜索子目录树中的代码
+   -b: 只生成索引文件，不进入cscope的界面
+   -k: 在生成索引文件时，不搜索/usr/include目录
+   -q: 生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
+   -i: 如果保存文件列表的文件名不是cscope.files时，需要加此选项告诉cscope到哪儿去找源文件列表。可以使用"-"，表示由标准输入获得文件列表。
+   -I dir: 在-I选项指出的目录中查找头文件
+   -u: 扫描所有文件，重新生成交叉索引文件
+   -C: 在搜索时忽略大小写
+   -P path: 在以相对路径表示的文件前加上的path，这样，你不用切换到你数据库文件所在的目录也可以使用它了。
+```
 
 2. 添加cscope索引
-` :cs add cscope.out `
+`:cs add cscope.out `
 
 ## 相关功能
 Cscope的功能通过它的子命令“find”来实现。
 
+```
 cs find c|d|e|g|f|i|s|t name
 
 s：查找C代码符号
@@ -159,7 +161,36 @@ nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>f :cs find f <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-　　使用时，将光标停留在要查找的对象上，按下<C-@>g，即先按“Ctrl+@”，然后很快再按“g”，将会查找该对象的定义。
+　　使用时，将光标停留在要查找的对象上，按下<C-@>g，即先按Ctrl+@，然后很快再按g，将会查找该对象的定义。
+```
+
+# 源代码浏览器插件 SrcExpl 
+它通过在单独的窗口中显示函数或类型定义或声明来为当前选定的关键字提供上下文。该插件旨在重新创建 IDE 中可用的上下文窗口
+
+1. 下载插件源码
+```
+cd bundle
+git clone https://github.com/air5005/SrcExpl.git
+```
+
+2. 修改vimrc配置文件
+```
+nmap <F7> :SrcExplToggle<CR>
+let g:Srcexpl_winHeight = 8
+" // Set 100 ms for refreshing the Source Explorer 
+let g:SrcExpl_refreshTime = 100
+" // Set "Enter" key to jump into the exact definition context 
+let g:SrcExpl_jumpKey = "<ENTER>"
+" // Set "Space" key for back  the definition context 
+let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_isUpdateTags = 0
+```
+
+3. 命令定义
+用F8快捷键打开或者关闭预览窗口
+回车跳转到定义的文本
+空格跳转回来
+
 
 # 相关链接
 https://github.com/air5005/vimhandbook.github.io
@@ -169,4 +200,6 @@ https://github.com/air5005/taglist
 https://github.com/air5005/vim_install
 ctags官网 http://ctags.sourceforge.net/
 cscope官网 http://cscope.sourceforge.net/
-
+https://www.cnblogs.com/linux-sir/p/4675919.html
+https://github.com/air5005/SrcExpl
+https://www.cnblogs.com/ims-/p/9825968.html
