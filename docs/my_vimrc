@@ -88,7 +88,24 @@ map <F3> :TlistToggle<cr>          " 快捷键F3切换函数列表
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 " ----------------------- taglist ----------------------- 
 
-" ----------------------- cscope -----------------------  
+" ----------------------- cscope ----------------------- 
+if has("cscope")
+	set csprg=/usr/bin/cscope
+	set csto=0
+	set cst
+	set nocsverb
+
+	" add any database in current directory
+	if filereadable("cscope.out")
+		cs add cscope.out
+	" else add database pointed to by environment
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+
+	set csverb
+endif
+	   
 nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>

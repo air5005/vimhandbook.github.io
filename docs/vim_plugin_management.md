@@ -192,6 +192,36 @@ let g:SrcExpl_isUpdateTags = 0
 空格跳转回来
 
 
+# Trinity 插件
+trinity插件主要是用来同时管理 SrcExpl, Taglist and NERD Tree 三个插件的
+
+1. 下载插件源码
+```
+cd bundle
+git clone https://github.com/air5005/Trinity.git
+```
+
+2. 修改vimrc配置文件
+```
+" Open and close all the three plugins on the same time 
+nmap <F8>  :TrinityToggleAll<CR> 
+
+" Open and close the Source Explorer separately 
+nmap <F9>  :TrinityToggleSourceExplorer<CR> 
+
+" Open and close the Taglist separately 
+nmap <F10> :TrinityToggleTagList<CR> 
+
+" Open and close the NERD Tree separately 
+nmap <F11> :TrinityToggleNERDTree<CR> 
+```
+
+3. 命令定义
+用F8可以同时打开、关闭三个插件
+F9  打开、关闭SrcExpl
+F10 打开、关闭Taglist
+F11 打开、关闭NERD Tree
+
 # 相关链接
 https://github.com/air5005/vimhandbook.github.io
 https://github.com/air5005/vim-pathogen
@@ -203,3 +233,4 @@ cscope官网 http://cscope.sourceforge.net/
 https://www.cnblogs.com/linux-sir/p/4675919.html
 https://github.com/air5005/SrcExpl
 https://www.cnblogs.com/ims-/p/9825968.html
+https://github.com/air5005/Trinity
